@@ -18,6 +18,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+    # Source code: CodingEntrepreneurs YT
     def save(self, *args, **kwargs):
 
         if not self.slug:
