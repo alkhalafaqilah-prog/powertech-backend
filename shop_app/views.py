@@ -35,3 +35,16 @@ def add_item(request):
         return Response({"data": serializer.data, "message": "CartItem created successfully"}, status=201)
     except Exception as e:
         return Response({"error": str(e)}, status=400)
+
+# This method is to make sure when we refresh the page the product is still on the cart
+@api_view(['GET'])
+def product_in_cart(request):
+    cart_code = request.query_params.get("cart_code")
+    product_id = request.query_params.get("product_id")
+    
+    cart = Cart.objects.get(cart_code=cart_code)
+    product = Product.objects.get(id=product_id)
+    
+    product_exists_in_cart = CartItem.objects.filter(cart=cart, product=product).exists()
+
+    return Response({'product_in_cart': product_exists_in_cart})
