@@ -1,6 +1,6 @@
 from rest_framework import serializers 
 from .models import Product, Cart, CartItem
-
+from django.contrib.auth import get_user_model
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -61,4 +61,11 @@ class SimpleCartSerializer(serializers.ModelSerializer):
     def get_num_of_items(self, cart):
         num_of_items = sum([item.quantity for item in cart.items.all()])
         return num_of_items
+    
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ["id", "username", "first_name", "last_name", "email", "city", "state", "address", "phone"]
+
 
