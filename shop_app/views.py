@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from decimal import Decimal
 from django.conf import settings
 import uuid
+import requests
 
 # Create your views here.
 
