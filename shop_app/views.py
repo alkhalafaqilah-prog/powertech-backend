@@ -177,7 +177,7 @@ def initiate_payment(request):
                 # Log the error and return an error response
                 return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+# if it is a post method but forward slash on the end of URL
 @api_view(['POST'])
 def payment_callback(request):
     status = request.GET.get('status')

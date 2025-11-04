@@ -61,11 +61,34 @@ class SimpleCartSerializer(serializers.ModelSerializer):
     def get_num_of_items(self, cart):
         num_of_items = sum([item.quantity for item in cart.items.all()])
         return num_of_items
+
+
+class NewCartItemSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+    order_id = serializers.SerializerMethodField()
+    order_date = serializers.SerializerMethodField()
+    class Meta:
+        model = CartItem
+        fields = ["id", "product", "quantity", "order_id", "order_date"]
+
+    def get_order_id(self, cartitem):
+        order_id = cartitem.cart.cart_code
+        return order_id
     
+    def get_order_date(self, cartitem):
+        order_date = cartitem.cart.modified_at
+        return order_date
 
 class UserSerializer(serializers.ModelSerializer):
+    items = serializers.SerializerMethodField()
     class Meta:
         model = get_user_model()
-        fields = ["id", "username", "first_name", "last_name", "email", "city", "state", "address", "phone"]
+        fields = ["id", "username", "first_name", "last_name", "email", "city", "state", "address", "phone","items"]
+        
+    # This function is to get the order history of the User up to 10 items
+    def get_items(self, user):
+        cartitems = CartItem.objects.filter(cart__user=user, cart__paid=True)[:10]
+        serializer = NewCartItemSerializer(cartitems, many=True)
+        return serializer.data
 
 
