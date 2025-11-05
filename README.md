@@ -8,7 +8,9 @@ The idea of the project is to develop an E-commerce website focused on Electrica
 ## 2. Tech Stack
 
 **Backend:** Python, Django, PostgreSQL
+
 **Frontend:** React and bootstrap CSS
+
 **Dev Tools:** Git bash and GitHub
 
 ---
@@ -27,7 +29,9 @@ https://github.com/alkhalafaqilah-prog/powertech-backend
 ### Diagram
 ![ERD Diagram](images/finalERD.jpg)
 
-**Core Models (Excluding User):** Shop_app: Product, Cart, CartItem, Transaction. 
+**Core Models (Excluding User):** 
+Shop_app: Product, Cart, CartItem, Transaction. 
+
 Main_app: CustomUser.
 
 ---
@@ -48,9 +52,14 @@ Main_app: CustomUser.
 ## 8. IceBox Features
 
 **1-** I want to add a dropdown list in the Navbar to show the products categories. 
+
 **2-** I want to modify the home page css and add animations.
+
 **3-** I want to add more products categories.
+
 **4-** Implement more payments methods.
+
 **5-** Add delivery tracking system and shipment companies.
+
 **6-** Add an sales assistance Chatbot similar to an FAQ section. 
 
