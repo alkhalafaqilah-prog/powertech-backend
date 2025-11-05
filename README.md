@@ -29,7 +29,8 @@ https://github.com/alkhalafaqilah-prog/powertech-backend
 ### Diagram
 ![ERD Diagram](images/finalERD.jpg)
 
-**Core Models (Excluding User):** 
+**Core Models :** 
+
 Shop_app: Product, Cart, CartItem, Transaction. 
 
 Main_app: CustomUser.
